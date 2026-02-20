@@ -105,9 +105,12 @@ coastline-apparel/
 │   │   └── ScrollToTop.tsx   # Route-change scroll reset
 │   ├── data/
 │   │   └── products.ts       # Product catalogue (typed, Unsplash images)
+│   ├── context/
+│   │   ├── AuthContext.tsx   # Auth provider component
+│   │   └── CartContext.tsx   # Cart provider component
 │   ├── hooks/
-│   │   ├── useAuth.tsx       # Auth context + provider (LocalStorage)
-│   │   └── useCart.tsx       # Cart context + provider (LocalStorage)
+│   │   ├── useAuth.ts        # Auth hook & context definition
+│   │   └── useCart.ts        # Cart hook & context definition
 │   ├── routes/
 │   │   ├── Account.tsx       # My Account / Sign In
 │   │   ├── Cart.tsx          # Shopping cart page
@@ -163,20 +166,16 @@ Or connect your GitHub repository in the Netlify dashboard:
 - **Build command:** `npm run build`
 - **Publish directory:** `dist`
 
-### GitHub Pages
+### GitHub Pages (Automated)
 
-```bash
-# Install gh-pages
-npm install -D gh-pages
+This project is configured with a GitHub Action that automatically builds and deploys the site to the `gh-pages` branch whenever you push to `main`.
 
-# Add to package.json "scripts":
-# "deploy": "gh-pages -d dist"
+1. Push your changes to the `main` branch.
+2. Go to your GitHub Repository **Settings > Pages**.
+3. Under **Build and deployment > Branch**, select `gh-pages` and `/ (root)`.
+4. Your site will be live at `https://<username>.github.io/Coastline-Apparel/`.
 
-# Build and deploy
-npm run build && npm run deploy
-```
-
-> For React Router to work on GitHub Pages, ensure your Vite config sets `base` to your repo name, and your 404 fallback is configured.
+> **Note:** The `vite.config.ts` is already configured with `base: '/Coastline-Apparel/'` to ensure paths load correctly.
 
 ---
 

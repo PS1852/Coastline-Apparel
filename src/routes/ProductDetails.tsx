@@ -1,4 +1,4 @@
-import { useState, useEffect } from 'react';
+import { useState } from 'react';
 import { useParams, useNavigate } from 'react-router-dom';
 import { Check, ArrowLeft, Heart, ShieldCheck, Truck } from 'lucide-react';
 import { products } from '../data/products';
@@ -18,13 +18,15 @@ export default function ProductDetails() {
     const [sizeError, setSizeError] = useState(false);
     const [added, setAdded] = useState(false);
 
-    // Reset state when navigating to a different product
-    useEffect(() => {
+    const [prevId, setPrevId] = useState(id);
+
+    if (id !== prevId) {
+        setPrevId(id);
         setSelectedImageIndex(0);
         setSelectedSize('');
         setSizeError(false);
         setAdded(false);
-    }, [id]);
+    }
 
     if (!product) {
         return (
@@ -84,8 +86,8 @@ export default function ProductDetails() {
                                     aria-label={`View image ${idx + 1}`}
                                     aria-current={selectedImageIndex === idx}
                                     className={`relative w-20 aspect-[3/4] rounded-lg overflow-hidden border-2 transition-all shrink-0 ${selectedImageIndex === idx
-                                            ? 'border-brand-dark scale-105'
-                                            : 'border-transparent hover:border-gray-200 opacity-70 hover:opacity-100'
+                                        ? 'border-brand-dark scale-105'
+                                        : 'border-transparent hover:border-gray-200 opacity-70 hover:opacity-100'
                                         }`}
                                 >
                                     <img src={img} alt="" className="w-full h-full object-cover" />
@@ -126,8 +128,8 @@ export default function ProductDetails() {
                                         }}
                                         aria-pressed={selectedSize === size}
                                         className={`py-3 rounded-xl border text-sm font-medium transition-all focus:outline-none focus:ring-2 focus:ring-brand-accent focus:ring-offset-1 ${selectedSize === size
-                                                ? 'border-brand-dark bg-brand-dark text-white shadow-md'
-                                                : 'border-gray-200 text-gray-700 hover:border-gray-400 hover:bg-gray-50'
+                                            ? 'border-brand-dark bg-brand-dark text-white shadow-md'
+                                            : 'border-gray-200 text-gray-700 hover:border-gray-400 hover:bg-gray-50'
                                             }`}
                                     >
                                         {size}
@@ -144,8 +146,8 @@ export default function ProductDetails() {
                             disabled={!product.inStock}
                             aria-label={added ? `${product.name} added to cart` : `Add ${product.name} to cart`}
                             className={`flex-1 py-4 px-6 rounded-xl font-semibold text-sm uppercase tracking-wider transition-all flex items-center justify-center gap-2 focus:outline-none focus:ring-2 focus:ring-offset-2 ${added
-                                    ? 'bg-green-500 text-white shadow-lg shadow-green-500/30 focus:ring-green-500'
-                                    : 'bg-brand-dark text-white hover:bg-black hover:shadow-xl active:scale-95 focus:ring-brand-dark'
+                                ? 'bg-green-500 text-white shadow-lg shadow-green-500/30 focus:ring-green-500'
+                                : 'bg-brand-dark text-white hover:bg-black hover:shadow-xl active:scale-95 focus:ring-brand-dark'
                                 } disabled:opacity-50 disabled:cursor-not-allowed`}
                         >
                             {added ? (

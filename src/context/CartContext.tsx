@@ -1,29 +1,8 @@
-import { useState, useEffect, createContext, useContext, type ReactNode } from 'react';
+import { useState, useEffect, type ReactNode } from 'react';
 import type { Product } from '../data/products';
-
-// ─── Types ────────────────────────────────────────────────────────────────────
-
-export interface CartItem extends Product {
-    quantity: number;
-}
-
-interface CartContextType {
-    cart: CartItem[];
-    addToCart: (product: Product, quantity?: number) => void;
-    removeFromCart: (productId: string) => void;
-    updateQuantity: (productId: string, quantity: number) => void;
-    clearCart: () => void;
-    totalItems: number;
-    totalPrice: number;
-}
-
-// ─── Context ──────────────────────────────────────────────────────────────────
-
-const CartContext = createContext<CartContextType | undefined>(undefined);
+import { CartContext, type CartItem } from '../hooks/useCart';
 
 const CART_KEY = 'coastline_cart';
-
-// ─── Provider ─────────────────────────────────────────────────────────────────
 
 export function CartProvider({ children }: { children: ReactNode }) {
     const [cart, setCart] = useState<CartItem[]>(() => {
@@ -90,12 +69,4 @@ export function CartProvider({ children }: { children: ReactNode }) {
             {children}
         </CartContext.Provider>
     );
-}
-
-// ─── Hook ─────────────────────────────────────────────────────────────────────
-
-export function useCart(): CartContextType {
-    const ctx = useContext(CartContext);
-    if (!ctx) throw new Error('useCart must be used inside <CartProvider>');
-    return ctx;
 }

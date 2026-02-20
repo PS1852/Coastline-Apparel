@@ -1,0 +1,9 @@
+
+C:\Users\pranj\OneDrive\Documents\GitHub\Coastline-Apparel\src\context\AuthContext.tsx
+  30:14  error  Fast refresh only works when a file only exports components. Move your React context(s) to a separate file  react-refresh/only-export-components
+
+C:\Users\pranj\OneDrive\Documents\GitHub\Coastline-Apparel\src\context\CartContext.tsx
+  22:14  error  Fast refresh only works when a file only exports components. Move your React context(s) to a separate file  react-refresh/only-export-components
+
+Γ£û 2 problems (2 errors, 0 warnings)
+
