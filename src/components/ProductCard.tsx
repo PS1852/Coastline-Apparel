@@ -14,7 +14,7 @@ export default function ProductCard({ product }: ProductCardProps) {
     const hasSecondImage = product.images.length > 1;
 
     return (
-        <article className="group relative flex flex-col overflow-hidden bg-white shadow-sm border border-gray-100 rounded-xl transition-all duration-300 hover:shadow-xl hover:-translate-y-1">
+        <article className="group relative flex flex-col overflow-hidden bg-white shadow-sm border border-gray-100 rounded-xl transition-all duration-300 hover:shadow-xl hover:-translate-y-1 animate-in fade-in slide-in-from-bottom-2 duration-700">
             {/* Image area */}
             <Link
                 to={`/product/${product.id}`}

@@ -1,6 +1,5 @@
-// ─────────────────────────────────────────────────────────────────────────────
-// Product catalogue — all images sourced from Unsplash (free-to-use)
-// ─────────────────────────────────────────────────────────────────────────────
+import p5Image from '../assets/p5_chino_shorts.png';
+import p7Image from '../assets/p7_linen_trousers.png';
 
 export type Category = 'Men' | 'Women' | 'Accessories';
 
@@ -89,12 +88,8 @@ export const products: Product[] = [
         price: 65.0,
         category: 'Men',
         size: ['30', '32', '34', '36'],
-        image:
-            'https://images.unsplash.com/photo-1591195853828-11db59a44f6b?auto=format&fit=crop&q=80&w=800',
-        images: [
-            'https://images.unsplash.com/photo-1591195853828-11db59a44f6b?auto=format&fit=crop&q=80&w=800',
-            'https://images.unsplash.com/photo-1598522325074-042db73aa4e6?auto=format&fit=crop&q=80&w=800',
-        ],
+        image: p5Image,
+        images: [p5Image],
         description:
             'Premium cotton-blend shorts with a tailored fit. Durable, comfortable, and effortlessly stylish for all-day wear.',
         inStock: true,
@@ -121,11 +116,8 @@ export const products: Product[] = [
         price: 110.0,
         category: 'Women',
         size: ['XS', 'S', 'M', 'L', 'XL'],
-        image:
-            'https://images.unsplash.com/photo-1594938298603-c8148c4b4f9b?auto=format&fit=crop&q=80&w=800',
-        images: [
-            'https://images.unsplash.com/photo-1594938298603-c8148c4b4f9b?auto=format&fit=crop&q=80&w=800',
-        ],
+        image: p7Image,
+        images: [p7Image],
         description:
             'Wide-leg linen trousers in a soft natural weave. The ideal balance between smart and relaxed coastal style.',
         inStock: true,
